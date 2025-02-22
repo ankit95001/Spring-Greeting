@@ -1,14 +1,17 @@
 package com.bridgelabz.greeting.controller;
 
 import com.bridgelabz.greeting.dto.Student;
+import com.bridgelabz.greeting.services.GreetingService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class GreetingController {
     private final Student student;
+    private final GreetingService greetingService;
 
-    public GreetingController(Student student){
+    public GreetingController(Student student, GreetingService service){
         this.student=student;
+        this.greetingService=service;
     }
     @GetMapping("/greeting")
     public Student sayHello(){
@@ -32,4 +35,10 @@ public class GreetingController {
     public String deleteStudent() {
         return "Student deleted";
     }
+
+    @GetMapping("/greet")
+    public String getGreeting() {
+        return greetingService.getGreetingMessage()+" "+student.getFirstName();
+    }
+
 }
