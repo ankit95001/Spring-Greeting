@@ -5,6 +5,8 @@ import com.bridgelabz.greeting.entities.Greeting;
 import com.bridgelabz.greeting.services.GreetingService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class GreetingController {
     private final Student student;
@@ -60,6 +62,12 @@ public class GreetingController {
     public Greeting getGreetingMessageFromDB(@PathVariable Long id){
         return greetingService.getGreetingById(id);
     }
+
+    @GetMapping("/greetdb/all")
+    public List<Greeting> getGreetingMessageFromDBAll(){
+        return greetingService.getAllGreeting();
+    }
+
 }
 
 

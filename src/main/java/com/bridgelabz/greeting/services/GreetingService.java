@@ -1,8 +1,11 @@
 package com.bridgelabz.greeting.services;
 
+import com.bridgelabz.greeting.controller.GreetingController;
 import com.bridgelabz.greeting.entities.Greeting;
 import com.bridgelabz.greeting.repositories.GreetingRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class GreetingService {
@@ -49,5 +52,9 @@ public class GreetingService {
     public Greeting getGreetingById(Long id) {
         return greetingRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Greeting not found with ID: " + id));
+    }
+
+    public List<Greeting> getAllGreeting(){
+        return greetingRepository.findAll();
     }
 }
