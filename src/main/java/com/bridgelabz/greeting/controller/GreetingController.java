@@ -68,6 +68,11 @@ public class GreetingController {
         return greetingService.getAllGreeting();
     }
 
+    @PutMapping("/{id}")
+    public Greeting updateGreeting(@PathVariable Long id, @RequestBody Greeting updatedGreeting) {
+        return greetingService.updateGreeting(id, updatedGreeting.getMessage());
+    }
+
 }
 
 
