@@ -1,6 +1,7 @@
 package com.bridgelabz.greeting.controller;
 
 import com.bridgelabz.greeting.dto.Student;
+import com.bridgelabz.greeting.entities.Greeting;
 import com.bridgelabz.greeting.services.GreetingService;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,6 +54,11 @@ public class GreetingController {
             @RequestParam(required = false) String firstName,
             @RequestParam(required = false) String lastName) {
         return greetingService.getGreetingMessageFromDB(firstName, lastName);
+    }
+
+    @GetMapping("/greetdb/{id}")
+    public Greeting getGreetingMessageFromDB(@PathVariable Long id){
+        return greetingService.getGreetingById(id);
     }
 }
 

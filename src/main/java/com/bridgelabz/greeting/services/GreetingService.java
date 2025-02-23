@@ -45,4 +45,9 @@ public class GreetingService {
 
         return message;
     }
+
+    public Greeting getGreetingById(Long id) {
+        return greetingRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Greeting not found with ID: " + id));
+    }
 }
